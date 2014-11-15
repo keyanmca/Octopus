@@ -265,6 +265,33 @@
 		
 		echo (self::$form_layout=='horizontal')?'</div>':'';
 	   }
+           
+           /**
+	   * <p>Displays password input form control</p>
+	   * <h4>Example:</h4>
+	   * HTML::text_field('first-name','First Name', ['placeholder'=>'Enter first name']);
+	   * @param string $name Name and id of the password input control.
+	   * @param array $attributes Attribute/Value pairs to add to the input.
+	   * @param string $label Label of the password field.
+	   */
+	   static function password_field($name, $label = '', $attributes =[]){
+		
+		echo (self::$form_layout=='horizontal')?'<div class="col-md-12">':'';
+		
+		if($label != '')
+			echo "<label for=\"$name\"",
+			(self::$form_layout=='horizontal')?' class="control-label"':'',
+			">$label</label>";
+			
+		echo "<input type=\"password\" id=\"$name\" name=\"$name\"";
+		
+		foreach($attributes as $key=>$value)
+			echo " $key=\"$value\"";
+		
+		echo " />";
+		
+		echo (self::$form_layout=='horizontal')?'</div>':'';
+	   }
 	   
 	   /**
 	   * <p>Displays text-area form control</p>
@@ -433,6 +460,34 @@
 		echo ">";
 		
 	}
+        
+        /**
+	   * <p>Displays arbitrary input form controls</p>
+	   * <h4>Example:</h4>
+	   * HTML::text_field('first-name','First Name', ['placeholder'=>'Enter first name']);
+           * @param string $type Value of the type attribute of the input control
+	   * @param string $name Name and id of the text input control.
+	   * @param array $attributes Attribute/Value pairs to add to the input.
+	   * @param string $label Label of the text field.
+	   */
+	   static function input($type, $name, $label = '', $attributes =[]){
+		
+		echo (self::$form_layout=='horizontal')?'<div class="col-md-12">':'';
+		
+		if($label != '')
+			echo "<label for=\"$name\"",
+			(self::$form_layout=='horizontal')?' class="control-label"':'',
+			">$label</label>";
+			
+		echo "<input type=\"$type\" id=\"$name\" name=\"$name\"";
+		
+		foreach($attributes as $key=>$value)
+			echo " $key=\"$value\"";
+		
+		echo " />";
+		
+		echo (self::$form_layout=='horizontal')?'</div>':'';
+	   }
 	  
  }
 
