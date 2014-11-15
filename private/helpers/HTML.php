@@ -21,13 +21,13 @@
  	 * These are the list of type options :
  	 * </p>
  	 * <ol>
- 	 * <li>ordered<l/i>
- 	 * <li>unordered<l/i>
- 	 * <li>unstyled<l/i>
- 	 * <li>inline<l/i>
- 	 * <li>definition<l/i>
- 	 * <li>horizontal-definition<l/i>
- 	 * <o/>
+ 	 * <li>ordered</li>
+ 	 * <li>unordered</li>
+ 	 * <li>unstyled</li>
+ 	 * <li>inline</li>
+ 	 * <li>definition</li>
+ 	 * <li>horizontal-definition</li>
+ 	 * </ol>
  	 *
  	 * <h4>Examples</h4>
  	 * HTML::lists(['item1', 'item2', 'item3'], 'ordered');//Draws an orders list
@@ -212,7 +212,7 @@
 	  * <li>vertical</li>
 	  * <li>horizontal</li>
 	  * <li>inline</li>
-	  * <ul>
+	  * </ul>
 	  * <h4>Example:<h4>
 	  *
 	  * HTML::form_begin('profile','','','inline');
@@ -241,7 +241,7 @@
 	  
 	  /**
 	   * <p>Displays text input form control</p>
-	   * <h4>Example:<h4>
+	   * <h4>Example:</h4>
 	   * HTML::text_field('first-name','First Name', ['placeholder'=>'Enter first name']);
 	   * @param string $name Name and id of the text input control.
 	   * @param array $attributes Attribute/Value pairs to add to the input.
@@ -268,7 +268,7 @@
 	   
 	   /**
 	   * <p>Displays text-area form control</p>
-	   * <h4>Example:<h4>
+	   * <h4>Example:</h4>
 	   * HTML::text_area('Comments','comments', ['placeholder'=>'Enter first name']);
 	   * @param string $name Name and id of the-area control.
 	   * @param array $attributes Attribute/Value pairs to add to the text-area.
@@ -295,7 +295,7 @@
 	   
 	   /**
 	   * <p>Displays a group of checkboxes form control</p>
-	   * <h4>Example:<h4>
+	   * <h4>Example:</h4>
 	   * HTML::checkbox('first-name','First Name', ['1'=>'Option1','2'=>'Option2']);
 	   * @param string $name Name and id of the text input control.
 	   * @param array $boxes Attribute/Value pairs to add to the input.
