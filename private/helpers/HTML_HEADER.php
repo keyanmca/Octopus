@@ -1,4 +1,5 @@
 <?php
+//private/helpers/HTML_HEADER.php
 /**
  * Manages the title, meta, script and link tags in the html head tage.
  */

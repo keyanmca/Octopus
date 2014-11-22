@@ -1,39 +1,7 @@
 this is the default layout
 <?php
+include $this -> configs['root_dir'].$this -> configs['helpers_dir']."NAVBAR.php";
 include $this -> configs['root_dir'].$this -> configs['helpers_dir']."HTML.php";
 
-$rows['danger'] = ['data1', 'data2', 'data3'];
-$rows['success'] = ['data3', 'data4', 'data5'];
-$rows['active'] = ['data6', 'data7', 'data8'];
-$rows['warning'] = ['data9', 'data10', 'data11'];
-$header = ['header1','header2','header3'];
-$caption = "Table Display";
-HTML::table($rows, $header, $caption, 'condensed bordered hover');
-
-HTML::lists(['item1', 'item2', 'item3'], 'unordered');
-
-HTML::form_begin('profile','','','veritical');
-
-HTML::text_field('first-name','First Name', ['placeholder'=>'Enter first name']);
-HTML::text_field('last-name','Last Name', ['placeholder'=>'Enter last name']);
-HTML::text_area('Comment','comment', ['placeholder'=>'Enter Your Comment', 'cols'=>50]);
-HTML::checkbox('options',['1'=>'Option1','2'=>'Option2'], 1,'checkbox-inline');
-
-$elements = ['1'=>'Option1','2'=>'Option2','3'=>'Option3','4'=>'Option4'];
-HTML::select('sel-opts', 'select an option', $elements, 3);
-
-HTML::text('email','mosbesong@gmail.com','Email');
-
-HTML::form_end();
-
-HTML::button('Start',['class'=>'btn btn-primary btn-lg active']);
-HTML::button('Start',['class'=>'btn btn-danger', 'disabled'=>'disabled']);
-HTML::button('Start',['class'=>'btn btn-sucess btn-block']);
-
-echo "<br>";
-
-HTML::image('img/someimg.jpg',['class'=>'img-rounded', 'width'=>300]);
-HTML::image('img/someimg.jpg',['class'=>'img-circle', 'width'=>300]);
-HTML::image('img/someimg.jpg',['class'=>'img-thumbnail', 'width'=>300]);
-
+echo  HTML::lists(['item1', 'item2', 'item3'], 'breadcrumb');
 ?>

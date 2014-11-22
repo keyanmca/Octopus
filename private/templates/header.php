@@ -6,6 +6,8 @@ include $this -> configs['root_dir'].$this -> configs['helpers_dir']."HTML_HEADE
 
 HTML_HEADER::add_meta(['http-equiv' => 'content-type', 'content' => "text/html; charset=UTF-8"]);
 HTML_HEADER::add_css(['href' => 'css/bootstrap.css']);
+HTML_HEADER::add_js(['src' => 'js/jquery-1.11.1.min.js']);
+
 HTML_HEADER::add_js(['src' => 'js/bootstrap.js']);
 
 HTML_HEADER::Display();
