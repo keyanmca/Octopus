@@ -28,12 +28,16 @@ class HTML {
      * <li>inline</li>
      * <li>definition</li>
      * <li>breadcrumb</li>
+     * <li>pagination</li>
+     * <li>pager</li>
      * <li>horizontal-definition</li>
      * </ol>
      *
      * <h4>Examples</h4>
-     * HTML::lists(['item1', 'item2', 'item3'], 'ordered');//Draws an orders list
-     * HTML::lists(['def1'=>'item1', 'def2'=>'item2'], definition);//Draws a definition list
+     * echo HTML::lists(['item1', 'item2', 'item3'], 'ordered');//Draws an orders list
+     * echo HTML::lists(['def1'=>'item1', 'def2'=>'item2'], definition);//Draws a definition list
+     * echo  HTML::lists(['item1'=>['#','active'], 'item2'=>['#','disabled'], 'item3'=>['#','']], 'pagination');
+     * echo  HTML::lists(['&larr Older;'=>['#','previous'], 'Newer &rarr;'=>['#','next']], 'pager');
      *
      * If no second argument is supplied or a wrong list-type is supplied, the
      * list defaults to an unstyled list.
@@ -73,6 +77,24 @@ class HTML {
                 $list .= '</ol>';
                 break;
 
+            case 'pagination':
+                $list .= "<ul class='pagination pagination-sm' $attribs>";
+
+                foreach ($items as $key=>$value)
+                    $list .= "<li class='".$value[1]."'><a href='".$value[0]."'>$key</li>";
+
+                $list .= '</ul>';
+                break;
+                
+            case 'pager':
+                $list .= "<ul class='pager' $attribs>";
+
+                foreach ($items as $key=>$value)
+                    $list .= "<li class='".$value[1]."'><a href='".$value[0]."'>$key</li>";
+
+                $list .= '</ul>';
+                break;
+                
             case 'unordered':
                 $list .= "<ul $attribs>";
 
@@ -540,6 +562,56 @@ class HTML {
         $input .= (self::$form_layout == 'horizontal') ? '</div>' : '';
 
         return $input;
+    }
+    
+    /**
+     * <p>Returns the HTML code for displaying a bootstrap enhanced label.
+     * Some types are :</p>
+     * <ul>
+     * <li>default</li>
+     * <li>primary</li>
+     * <li>success</li>
+     * <li>info</li>
+     * <li>warning</li>
+     * <li>danger</li>
+     * </ul>
+     * <h4>Example :</h4>
+     * echo HTML::label('Default Label','default');
+     * @param string $text The text of the label
+     * @param string $type Type of label
+     * @return string
+     */
+    static function label($text,$type='default'){
+    	
+    	return "<span class='label label-$type'>$text</span>";
+    }
+    
+    /**
+     * <p>Returns the HTML code for displaying a bootstrap enhanced badge</p>.
+     * <h4>Example :</h4>
+     * HTML::badge("50","left");
+     * @param string $text The badge text;
+     * @param string $direction Pull to the left or right. Defaults to none.
+     * @return string.
+     */
+    static function badge($text, $direction=""){
+    	
+    	$class = ($direction=="")?"":"pull-$direction";
+    	return "<span class='badge $class'>$text</span>";
+    }
+    
+    /**
+     * <p>Return the HTML code for displaying a bootstrap enhanced thumbnail</p>
+     * <h4>Example :</h4>
+     * echo HTML::thumbnail('somePicture.jpg', '#','someText');
+     * @param string $source The source URL of the image.
+     * @param string $link The URL to link to associate the thumbnail to
+     * @param string $text Altenative text to display on thumbnail.
+     * @return string
+     */
+    static function thumbnail($source, $link='#', $text=''){
+    	
+    	return "<div class='col-sm-6 col-md-3'><a href='$link' class='thumbnail'><img src='$source' alt='$text'></a></div>";
     }
 
 }

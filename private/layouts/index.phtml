@@ -1,7 +1,8 @@
 this is the default layout
 <?php
-include $this -> configs['root_dir'].$this -> configs['helpers_dir']."NAVBAR.php";
-include $this -> configs['root_dir'].$this -> configs['helpers_dir']."HTML.php";
+include $this -> configs['root_dir'].$this -> configs['helpers_dir']."NAV.php";
+include $this -> configs['root_dir'].$this -> configs['helpers_dir']."DB.php";
 
-echo  HTML::lists(['item1', 'item2', 'item3'], 'breadcrumb');
+DB::connect('localhost', 'root','', 'test');
+print_r(DB::search('user', ['first_name'=>'moses'], true));
 ?>

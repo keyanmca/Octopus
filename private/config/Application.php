@@ -20,6 +20,17 @@ final class Application{
 		
 		$this -> run_page();
 		
+		foreach($_GET as $value){
+			
+			$value = htmlentities($value);
+			$value = htmlspecialchars($value);
+		}
+		
+		foreach($_POST as $value){
+			
+			$value = htmlentities($value);
+			$value = htmlspecialchars($value);
+		}
 	}
 	
 	/**

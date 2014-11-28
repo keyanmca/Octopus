@@ -51,10 +51,10 @@ class NAV{
 	 * <p>Returns the HTML code to display a bootstrap pills navigation menu.
 	 * <h4>Example :</h4>
 	 * <pre><code>
-	 * NAV::pill('tab', [
+	 * NAV::pill([
 	 * 			'Home'=>['href'=>'#'],
 	 * 			'JAVA'=>['href'=>'#', 'class'=>'disabled'],
-	 * 			'PHP'=>['href'=>'#', 'class'=>'active'],
+	 * 			"PHP <span class='badge'>50</span>"=>['href'=>'#', 'class'=>'active'],
 	 * 			'C++'=>['href'=>'#'],
 	 * 			]);
 	 * </code></pre>
