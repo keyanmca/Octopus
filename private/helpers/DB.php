@@ -12,6 +12,15 @@ class DB{
 	 * @access public
 	 */
 	 public static $connections = array();
+	 
+	/**
+	 * Connects to the default database provided if it is provided in the
+	 * configurations file.
+	 */
+	function __construct($server, $user, $password, $database){
+		
+		self::connect($server, $user, $password, $database,0);
+	}
 
 /**
  * <p>Connects to a mysql database and stores the link to that connection in the
@@ -31,7 +40,7 @@ class DB{
  * @param string database
  * @param string $link Connection link key name. Used as key for the connections array.
  */
- static function connect($server, $user, $password, $database, $link = 0){
+ private static function connect($server, $user, $password, $database, $link = 0){
  	
  	if(isset(self::$connections['$link'])) mysql_close(self::$connections[$link]);
  	
@@ -117,6 +126,12 @@ class DB{
 	 * Each row of the result set of the is an element in the returned array.
 	 * And each row column in the result set is key is the row element
 	 * associative array. Returns false on error.</p>
+	 * <pre><code>
+	 * $criteria = ['column1'=>'value1', 'column2'=>'value2'];
+	 * $link = "default";
+	 * $table = 'myTable';
+	 * DB::search($table, $criteria, $exact_match = false, $link);
+	 * </code></pre>
 	 * @param strng $table Database table on which to perform the search
 	 * @param string $criteria associative array containing the column/value paires to search for.
 	 * @param bool $exact_match Should the search criteria be an exact match?

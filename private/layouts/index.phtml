@@ -1,8 +1,5 @@
 this is the default layout
 <?php
-include $this -> configs['root_dir'].$this -> configs['helpers_dir']."NAV.php";
-include $this -> configs['root_dir'].$this -> configs['helpers_dir']."DB.php";
-
-DB::connect('localhost', 'root','', 'test');
-print_r(DB::search('user', ['first_name'=>'moses'], true));
-?>
+include $this -> configs['root_dir'].$this -> configs['helpers_dir']."DBProxy.php";
+$proxy = new DBProxy;
+print_r($proxy->find("select * from user;"));
