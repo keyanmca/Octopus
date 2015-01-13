@@ -112,7 +112,18 @@
  		}
  	}
  	
- 	
+ 	/**
+ 	 * Executes a query or search on the database and returns the returns the
+ 	 * result as an array of table column/value associative arrays.
+ 	 * <h4>Example:</h4>
+ 	 * $proxy = new DBProxy;
+ 	 * print_r($proxy->find("select * from user;"));
+ 	 *
+ 	 * print_r(['first_name'=>'Moses', 'last_name'=>'Besong'], 'person');
+ 	 *
+ 	 * @param string/array $criteria SQL query string or search criteria column/valud array.
+ 	 * @param string $table The database table to query. Must be specified if search critera array is used.
+ 	 */
  	public function find($criteria, $table=""){
 
  		$this->init();

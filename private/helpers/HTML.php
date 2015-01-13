@@ -276,7 +276,7 @@ class HTML {
     static function form_end() {
 
         self::$form_layout = '';
-        echo "</div></form>";
+        return "</div></form>";
     }
 
     /**
@@ -424,28 +424,32 @@ class HTML {
      * @param string $name Name of the select control.
      * @param string $label The label of this control
      * @param array $elements value/display option pairs.
-     * @param int $sel count of option to be selected by default.
+     * @param mixt $sel value of option to be selected by default.
+     * @param array $attribs Associative array of select tag key/value pairs.
      * @param bool mult Multiple selection?
      */
-    public static function select($name, $label, $elements, $sel = 0, $mult = false) {
-
-        $count = 1;
+    public static function select($name, $label, $elements, $sel = null, $attribs=[], $mult = false) {
 
         $select = "";
+        
+        //prepare attributes
+        $attributes = " ";
+        foreach($attribs as $k=>$v){
+        	$attributes .= " $k='$v' ";
+        }
+        $attributes .= " ";
 
         if ($label != '')
             $select .= "<label for=\"$name\">$label</label>";
-        $select .= "<select class=\"form-control\" ";
+        $select .= "<select class=\"form-control\" name=\"$name\" id=\"$name\" $attributes";
         $select .= $mult ? 'multiple' : '';
         $select .= " >";
 
         foreach ($elements as $key => $value) {
 
-            $s = ($sel == $count) ? 'selected' : '';
+            $s = ($sel != null && $sel == $key) ? 'selected' : '';
 
             $select .= "<option value=\"$key\" $s>$value</option>";
-
-            $count++;
         }
         $select .= "</select>";
 
@@ -544,7 +548,7 @@ class HTML {
      */
     static function input($type, $name, $label = '', $attributes = []) {
 
-        $input .= (self::$form_layout == 'horizontal') ? '<div class="col-md-12">' : '';
+        $input = (self::$form_layout == 'horizontal') ? '<div class="col-md-12">' : '';
 
         if ($label != '') {
             $input .= "<label for=\"$name\"";
